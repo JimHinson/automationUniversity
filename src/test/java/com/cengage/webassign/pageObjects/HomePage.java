@@ -9,7 +9,7 @@ public class HomePage extends TestSessionInitiator {
 	private By homePageNavBar = By.cssSelector("[aria-label='WebAssign']");
 	private By homePage = By.cssSelector("main h1");
 	private By assignmentHomePage = By.cssSelector("[data-test='My Assignments']>ul li a");
-	private By myAssignMentPagelink = By.cssSelector("[aria-label='WebAssign'] [data-analytics='assignments-nav']");
+	private By myAssignMentPagelink = By.cssSelector("[data-analytics='assignments-nav']");
 	public static String homepageURL;
 	
 	public void getHomePageURL() {
