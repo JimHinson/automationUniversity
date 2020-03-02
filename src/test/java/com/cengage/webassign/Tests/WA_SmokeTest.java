@@ -18,17 +18,26 @@ public class WA_SmokeTest extends TestSessionInitiator{
 	HomePage homePage = new HomePage();
 	MyAssignmentPage myassignmentpage = new MyAssignmentPage();
 	AssignmentPage assignmentPage = new AssignmentPage();
-	private String StagingUrl = PropfileReader.getUserData("url");
-	
-	
+	private String testURL = PropfileReader.getUserData("url");
+
+	/**
+	 * TODO: move timeout to DefaultSettings.properties
+	 * capture screenshot on failure
+	 */
 	
 	@BeforeTest //This will run before all the tests to ensure test setup
 	public void testSetup() {
 		launchBrowser();
-		launchUrl(StagingUrl);
+		launchUrl(testURL);
 		Assert.assertEquals(true, loginpage.verifyLoginPageLogo());
 		loginpage.sendUserNamePassword();
+		try {
+			driver.wait(100);
+		} catch (Exception e) {
+			System.out.println("testSetup() exception: " + e.getMessage());		
+		}
 		loginpage.clickSignIn();
+		
 		Assert.assertEquals(homePage.verifyHomePageNavBar(), true);
 		homePage.getHomePageURL();
 	}

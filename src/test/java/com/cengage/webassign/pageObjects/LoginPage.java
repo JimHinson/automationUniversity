@@ -18,7 +18,9 @@ public class LoginPage extends TestSessionInitiator {
 	
 	public void sendUserNamePassword() {
 		findElement(emailInput).sendKeys(PropfileReader.getUserData("userId"));
+		System.out.println("sent uid: " + PropfileReader.getUserData("userId"));
 		findElement(passwordInput).sendKeys(PropfileReader.getUserData("password"));
+		System.out.println("sent password: " + PropfileReader.getUserData("password"));
 	}
 	
 	public void clickSignIn() {

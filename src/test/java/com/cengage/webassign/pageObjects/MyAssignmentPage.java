@@ -5,7 +5,8 @@ import com.cengage.webassign.BaseUtils.TestSessionInitiator;
 
 public class MyAssignmentPage extends TestSessionInitiator{
 	
-	private By assignmentLink = By.cssSelector("[data-analytics*='student-assignment-link']");
+//	private By assignmentLink = By.cssSelector("[data-analytics*='student-assignment-link']");
+	private By assignmentLink = By.linkText("assignment with need help");
 	private By myAssignmentPageTitle = By.cssSelector("#webAssignMain h1");
 	
 	public String verifyMyAssignmentPage() {
