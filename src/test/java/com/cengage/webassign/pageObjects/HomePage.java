@@ -1,10 +1,11 @@
 package com.cengage.webassign.pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
-import com.cengage.webassign.BaseUtils.TestSessionInitiator;
+import com.cengage.webassign.framework.core.BasePageFactory;
 
-public class HomePage extends TestSessionInitiator {
+public class HomePage extends BasePageFactory {
 	
 	private By homePageNavBar = By.cssSelector("[aria-label='WebAssign']");
 	private By homePage = By.cssSelector("main h1");
@@ -12,8 +13,12 @@ public class HomePage extends TestSessionInitiator {
 	private By myAssignMentPagelink = By.cssSelector("[data-analytics='assignments-nav']");
 	public static String homepageURL;
 	
-	public void getHomePageURL() {
-		homepageURL = getCurrentPageUrl();
+	// public void getHomePageURL() {
+	// 	homepageURL = getCurrentPageUrl();
+	// }
+
+	public HomePage(WebDriver driver) {
+		super(driver);
 	}
 	
 	public boolean verifyHomePageNavBar() {
@@ -24,12 +29,14 @@ public class HomePage extends TestSessionInitiator {
 		return findElement(homePage).getText();
 	}
 	
-	public void clickAssignmentLink() {
+	public AssignmentPage clickAssignmentLink() {
 		findElement(assignmentHomePage).click();
+		return new AssignmentPage(this.driver);
 	}
 	
-	public void clickMyAssignmentPageLink() {
+	public MyAssignmentsPage clickMyAssignmentPageLink() {
 		findElement(myAssignMentPagelink).click();
+		return new MyAssignmentsPage(this.driver);
 	}
 
 }

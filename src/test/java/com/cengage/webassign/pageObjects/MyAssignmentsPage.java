@@ -1,20 +1,28 @@
 package com.cengage.webassign.pageObjects;
 
 import org.openqa.selenium.By;
-import com.cengage.webassign.BaseUtils.TestSessionInitiator;
+import org.openqa.selenium.WebDriver;
 
-public class MyAssignmentPage extends TestSessionInitiator{
+import com.cengage.webassign.framework.core.BasePageFactory;
+
+public class MyAssignmentsPage extends BasePageFactory{
 	
 //	private By assignmentLink = By.cssSelector("[data-analytics*='student-assignment-link']");
 	private By assignmentLink = By.linkText("assignment with need help");
 	private By myAssignmentPageTitle = By.cssSelector("#webAssignMain h1");
+
+	public MyAssignmentsPage(WebDriver driver) {
+		super();
+		this.driver = driver;
+	}
 	
 	public String verifyMyAssignmentPage() {
 		return findElement(myAssignmentPageTitle).getText();
 	}
 	
-	public void clickAssignmentLink() {
+	public AssignmentPage clickAssignmentLink(WebDriver driver) {
 		waitForElementEnable(assignmentLink, 60).click();
+		return new AssignmentPage(driver);
 	}
 
 }

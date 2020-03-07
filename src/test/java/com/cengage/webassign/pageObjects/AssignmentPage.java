@@ -1,11 +1,17 @@
 package com.cengage.webassign.pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
-import com.cengage.webassign.BaseUtils.TestSessionInitiator;
+import com.cengage.webassign.framework.core.BasePageFactory;
 
-public class AssignmentPage extends TestSessionInitiator{
+
+public class AssignmentPage extends BasePageFactory {
 	private By assignmentTitle = By.cssSelector("#js-assignment-header h1");
+
+	public AssignmentPage(WebDriver driver) {
+		super(driver);	
+	}
 	
 	
 	public boolean verifyAssignmentTitleDisplayed() {
