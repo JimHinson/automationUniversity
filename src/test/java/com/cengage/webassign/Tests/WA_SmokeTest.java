@@ -5,8 +5,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.cengage.webassign.BaseUtils.TestSessionInitiator;
-import com.cengage.webassign.BaseUtils.WebDriverFactory;
 import com.cengage.webassign.Utils.PropfileReader;
 import com.cengage.webassign.framework.core.BasePageFactory;
 import com.cengage.webassign.framework.core.BaseTest;
@@ -18,59 +16,55 @@ import com.cengage.webassign.pageObjects.MyAssignmentsPage;
 
 public class WA_SmokeTest extends BaseTest {
 	
-	// LoginPage loginpage; // = new LoginPage();
-	HomePage homePage; // = new HomePage();
-	MyAssignmentsPage myAssignmentsPage; // = new MyAssignmentPage();
-	AssignmentPage assignmentPage; // = new AssignmentPage();
-
+	HomePage homePage;
+	MyAssignmentsPage myAssignmentsPage;
+	AssignmentPage assignmentPage;
 	BasePageFactory basePage;
 	/**
 	 * TODO: move timeout to DefaultSettings.properties
 	 * capture screenshot on failure
 	 */
 	
-	@BeforeTest //This will run before all the tests to ensure test setup
+	@BeforeTest //This will run before the tests to ensure test setup
 	public void testSetup() throws Exception {
 		String uid= (PropfileReader.getUserData("userId"));
 		String pwd = (PropfileReader.getUserData("password"));
 		String url = (PropfileReader.getUserData("url"));
-		// driver = WebDriverFactory()
-		//why is driver not initialized?
-		String options = "--disable-logging";
-		driver = new ChromeWebDriver().compose(options, 1000);
-
-		LoginPage loginPage = new LoginPage(driver, url);
-		loginPage.login(uid, pwd);
+		int implicitWait = new Integer(PropfileReader.getSetting("implicitTimeout")).intValue();
+		String browser = (PropfileReader.getSetting("browser"));
+		String browserOptions = (PropfileReader.getSetting("browserOptions"));
+		// BasePageFactory page = new BasePageFactory(implicitWait, browser, browserOptions);
+		LoginPage loginPage = new LoginPage(implicitWait, browser, browserOptions, url);
+		
+		homePage = loginPage.login(uid, pwd);
 		Assert.assertEquals(true, loginPage.verifyLoginPageLogo());		
-		homePage = new HomePage(driver);
+		// homePage = new HomePage(driver);
 		Assert.assertEquals(homePage.verifyHomePageNavBar(), true);
 	}
 	
 	@BeforeMethod // This will run before each test to remove dependency of any test from another
 	public void launchHomePage() {
-		// launchUrl(testURL);
 	}
 	
 	@Test
 	public void UserAccessAssignmentHomePage() {
-		Assert.assertEquals(homePage.verifyHomePageNavBar(), true);
+		Assert.assertTrue(homePage.verifyHomePageNavBar());
 		Assert.assertEquals(homePage.verifyHomePage(),"HOME");
 		assignmentPage = homePage.clickAssignmentLink();
-		// homePage.clickAssignmentLink();
-		Assert.assertEquals(assignmentPage.verifyAssignmentTitleDisplayed(), true);
+		Assert.assertTrue(assignmentPage.verifyAssignmentTitleDisplayed());
 	}
 	
 	@Test
 	public void UserAccessAssignmentMyAssignmentPage() {
-		Assert.assertEquals(homePage.verifyHomePageNavBar(), true);
+		Assert.assertTrue(homePage.verifyHomePageNavBar());
 		myAssignmentsPage = homePage.clickMyAssignmentPageLink();
 		Assert.assertEquals(myAssignmentsPage.verifyMyAssignmentPage(), "MY ASSIGNMENTS");
-		assignmentPage = myAssignmentsPage.clickAssignmentLink(driver);
-		// Assert.assertEquals(myassignmentpage.verifyAssignmentTitleDisplayed(), true);
+		assignmentPage = myAssignmentsPage.clickAssignmentLink();
+		Assert.assertTrue(assignmentPage.verifyAssignmentTitleDisplayed());
 	}
 	
 	@AfterTest //This will run after all the tests to close current browser instance
 	public void closeBrowser() {
-		driver.close();
+		homePage.close();
 	}
 }

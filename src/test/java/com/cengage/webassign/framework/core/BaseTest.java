@@ -14,7 +14,7 @@ public class BaseTest {
 
     protected WebDriver driver;
 
-    @BeforeSuite
+    @BeforeSuite //Initialize
     public void beforeSuite() throws WebAssignException {
         // WebDriverFactory driver = null;
         String options = "";

@@ -12,17 +12,15 @@ public class MyAssignmentsPage extends BasePageFactory{
 	private By myAssignmentPageTitle = By.cssSelector("#webAssignMain h1");
 
 	public MyAssignmentsPage(WebDriver driver) {
-		super();
-		this.driver = driver;
+		super(driver);
 	}
 	
 	public String verifyMyAssignmentPage() {
 		return findElement(myAssignmentPageTitle).getText();
 	}
 	
-	public AssignmentPage clickAssignmentLink(WebDriver driver) {
+	public AssignmentPage clickAssignmentLink() {
 		waitForElementEnable(assignmentLink, 60).click();
 		return new AssignmentPage(driver);
 	}
-
 }

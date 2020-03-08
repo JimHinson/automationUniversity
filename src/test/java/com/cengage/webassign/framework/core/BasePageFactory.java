@@ -8,26 +8,34 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
 import java.util.List;
+import com.cengage.webassign.BaseUtils.WebDriverFactory;
 
-public abstract class BasePageFactory {
+/**
+ * BasePageFactory serves two purposes:
+ * 1. Provide a common object interface to consumers (tests)
+ * 2. Parent class to Page Objects which provides common functionality our pages need
+ */
 
+public class BasePageFactory {
+
+    //These settings can be used to adjust the driver, making the
+    //tests run faster, or slow them down if you get timeouts
     private static final int TIMEOUT = 5;
     private static final int POLLING = 100;
-
     protected WebDriver driver = null;
-	WebDriverWait wait;
+    WebDriverWait wait;
     
     public BasePageFactory() {
-        // driver = getDriver();
+        
+    }
+    
+    public BasePageFactory(int implicitWait, String browser, String browserOptions) throws WebAssignException {
+
+        this.driver = WebDriverFactory.composeWebDriver(browser, browserOptions, implicitWait);
+        // this.implicitWait = implicitWait
     }
 
-    // protected abstract WebDriver getDriver();
-
     public BasePageFactory(WebDriver driver) {
-        if (driver == null) {
-            System.out.println("basePageFactory driver is null");
-
-        }
         this.driver = driver;
         wait = new WebDriverWait(driver, TIMEOUT, POLLING);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);

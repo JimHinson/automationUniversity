@@ -11,6 +11,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 // import com.cengage.webassign.framework.core.*;
 
 public class ChromeWebDriver extends WebDriverFactory {
+	public ChromeWebDriver() {}
 
   public WebDriver compose(String properties, int implicitWait) throws WebAssignException {
 
@@ -33,8 +34,6 @@ public class ChromeWebDriver extends WebDriverFactory {
 		driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
     return driver;
-
-	}
-	
+	}	
 }
     

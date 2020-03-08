@@ -39,4 +39,8 @@ public class HomePage extends BasePageFactory {
 		return new MyAssignmentsPage(this.driver);
 	}
 
+	public void close() {
+		this.driver.close();
+	}
+
 }
