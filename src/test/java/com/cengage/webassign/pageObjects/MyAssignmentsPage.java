@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import com.cengage.webassign.framework.core.BasePageFactory;
 
 public class MyAssignmentsPage extends BasePageFactory{
-	
-//	private By assignmentLink = By.cssSelector("[data-analytics*='student-assignment-link']");
 	private By assignmentLink = By.linkText("assignment with need help");
 	private By myAssignmentPageTitle = By.cssSelector("#webAssignMain h1");
 

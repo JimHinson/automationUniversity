@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import com.cengage.webassign.Utils.PropfileReader;
 import com.cengage.webassign.framework.core.BasePageFactory;
 import com.cengage.webassign.framework.core.BaseTest;
-import com.cengage.webassign.framework.core.ChromeWebDriver;
 import com.cengage.webassign.pageObjects.AssignmentPage;
 import com.cengage.webassign.pageObjects.HomePage;
 import com.cengage.webassign.pageObjects.LoginPage;
@@ -33,13 +32,11 @@ public class WA_SmokeTest extends BaseTest {
 		int implicitWait = new Integer(PropfileReader.getSetting("implicitTimeout")).intValue();
 		String browser = (PropfileReader.getSetting("browser"));
 		String browserOptions = (PropfileReader.getSetting("browserOptions"));
-		// BasePageFactory page = new BasePageFactory(implicitWait, browser, browserOptions);
+
 		LoginPage loginPage = new LoginPage(implicitWait, browser, browserOptions, url);
-		
 		homePage = loginPage.login(uid, pwd);
 		Assert.assertEquals(true, loginPage.verifyLoginPageLogo());		
-		// homePage = new HomePage(driver);
-		Assert.assertEquals(homePage.verifyHomePageNavBar(), true);
+		Assert.assertTrue(homePage.verifyHomePageNavBar());
 	}
 	
 	@BeforeMethod // This will run before each test to remove dependency of any test from another

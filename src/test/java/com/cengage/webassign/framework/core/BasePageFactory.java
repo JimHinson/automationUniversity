@@ -26,13 +26,11 @@ public class BasePageFactory {
     WebDriverWait wait;
     
     public BasePageFactory() {
-        
+
     }
     
     public BasePageFactory(int implicitWait, String browser, String browserOptions) throws WebAssignException {
-
         this.driver = WebDriverFactory.composeWebDriver(browser, browserOptions, implicitWait);
-        // this.implicitWait = implicitWait
     }
 
     public BasePageFactory(WebDriver driver) {

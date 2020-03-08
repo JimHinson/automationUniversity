@@ -1,14 +1,11 @@
 package com.cengage.webassign.framework.core;
 
 import com.cengage.webassign.BaseUtils.*;
-import com.cengage.webassign.Utils.*;
 import java.util.concurrent.TimeUnit;
-// import com.cengage.
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.WebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import com.cengage.webassign.framework.core.*;
 
 public class FirefoxWebDriver extends WebDriverFactory {
 

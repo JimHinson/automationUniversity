@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropfileReader {
-	
 	static Properties prop = new Properties();
 	
 	public static String getUserData(String userDetailsToken) {
@@ -25,5 +24,4 @@ public class PropfileReader {
         }
 		return prop.getProperty(settingToken);
 	}
-
 }
