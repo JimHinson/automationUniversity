@@ -1,8 +1,6 @@
-- Install git:   
-- install Maven:  
-git clone ssh://git@stash.office.webassign.net:7999/~jhinson/contentqa.git
-
-
+####
+# Originally written by Ashish Mathur
+####
 # Basic System requirements:
 You'll need these to edit and run the code:
 ```
@@ -33,9 +31,11 @@ OS X: `https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.ht
 
 #### Class Notes
 * Request that they complete the above beforehand
+* Mention maven, show lifecycle page
 * Execute the tests individually in IntelliJ
 * Discuss setup and teardown
 * Discuss Object Hierarchy
+* Class next Wed when I'm in Raleigh?
 
 # Important information:
 - User ID, Password and test url is located at `src/test/resources/UserData.properties`.
