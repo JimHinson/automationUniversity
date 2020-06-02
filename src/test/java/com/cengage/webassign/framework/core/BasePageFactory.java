@@ -30,7 +30,7 @@ public class BasePageFactory {
     }
     
     public BasePageFactory(int implicitWait, String browser, String browserOptions) throws WebAssignException {
-        this.driver = WebDriverFactory.composeWebDriver(browser, browserOptions, implicitWait);
+        this.driver = WebDriverFactory.composeWebDriver("chrome", "--disable-logging", 10000);
     }
 
     public BasePageFactory(WebDriver driver) {

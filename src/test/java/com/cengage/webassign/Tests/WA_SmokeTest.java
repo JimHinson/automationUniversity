@@ -1,20 +1,19 @@
 package com.cengage.webassign.Tests;
 
+import com.cengage.webassign.BaseUtils.WebDriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.cengage.webassign.Utils.PropfileReader;
-import com.cengage.webassign.framework.core.BasePageFactory;
 import com.cengage.webassign.framework.core.BaseTest;
 import com.cengage.webassign.pageObjects.HomePage;
 import com.cengage.webassign.pageObjects.LoginPage;
 
 public class WA_SmokeTest extends BaseTest {
 	
-	HomePage homePage;
-	BasePageFactory basePage;
+//	HomePage homePage;
 	/**
 	 * TODO: move timeout to DefaultSettings.properties
 	 * capture screenshot on failure
@@ -22,31 +21,23 @@ public class WA_SmokeTest extends BaseTest {
 	
 	@BeforeTest //This will run before the tests to ensure test setup
 	public void testSetup() throws Exception {
-		String uid= (PropfileReader.getUserData("userId"));
-		String pwd = (PropfileReader.getUserData("password"));
-		String url = (PropfileReader.getUserData("url"));
-		int implicitWait = new Integer(PropfileReader.getSetting("implicitTimeout")).intValue();
-		String browser = (PropfileReader.getSetting("browser"));
-		String browserOptions = (PropfileReader.getSetting("browserOptions"));
 
-		LoginPage loginPage = new LoginPage(implicitWait, browser, browserOptions, url);
-		homePage = loginPage.login(uid, pwd);
-		Assert.assertEquals(true, loginPage.verifyLoginPageLogo());		
-		Assert.assertTrue(homePage.verifyHomePageNavBar());
+	}
+
+	@Test
+	public void loadHomepage() throws Exception {
+		this.driver = WebDriverFactory.composeWebDriver("chrome", "--disable-logging", 10000);
 	}
 	
 	@BeforeMethod // This will run before each test to remove dependency of any test from another
 	public void launchHomePage() {
 	}
 	
-	@Test
-	public void UserAccessAssignmentHomePage() {
-		Assert.assertTrue(homePage.verifyHomePageNavBar());
-		Assert.assertEquals(homePage.verifyHomePage(),"HOME");
-	}
+
 	
 	@AfterTest //This will run after all the tests to close current browser instance
 	public void closeBrowser() {
-		homePage.close();
+		driver.close();
+//		homePage.close();
 	}
 }

@@ -17,7 +17,7 @@ public class ChromeWebDriver extends WebDriverFactory {
     options.addArguments(properties);
     WebDriverManager.chromedriver().setup();
     driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
+    driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
     return driver;
 	}	
