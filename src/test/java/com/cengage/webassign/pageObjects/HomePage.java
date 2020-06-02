@@ -27,11 +27,6 @@ public class HomePage extends BasePageFactory {
 		findElement(assignmentHomePage).click();
 		return new AssignmentPage(this.driver);
 	}
-	
-	public MyAssignmentsPage clickMyAssignmentPageLink() {
-		findElement(myAssignMentPagelink).click();
-		return new MyAssignmentsPage(this.driver);
-	}
 
 	public void close() {
 		this.driver.close();
