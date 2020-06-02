@@ -8,14 +8,12 @@ import org.testng.annotations.Test;
 import com.cengage.webassign.Utils.PropfileReader;
 import com.cengage.webassign.framework.core.BasePageFactory;
 import com.cengage.webassign.framework.core.BaseTest;
-import com.cengage.webassign.pageObjects.AssignmentPage;
 import com.cengage.webassign.pageObjects.HomePage;
 import com.cengage.webassign.pageObjects.LoginPage;
 
 public class WA_SmokeTest extends BaseTest {
 	
 	HomePage homePage;
-	AssignmentPage assignmentPage;
 	BasePageFactory basePage;
 	/**
 	 * TODO: move timeout to DefaultSettings.properties
@@ -45,17 +43,6 @@ public class WA_SmokeTest extends BaseTest {
 	public void UserAccessAssignmentHomePage() {
 		Assert.assertTrue(homePage.verifyHomePageNavBar());
 		Assert.assertEquals(homePage.verifyHomePage(),"HOME");
-		assignmentPage = homePage.clickAssignmentLink();
-		Assert.assertTrue(assignmentPage.verifyAssignmentTitleDisplayed());
-	}
-	
-	@Test
-	public void UserAccessAssignmentMyAssignmentPage() {
-//		Assert.assertTrue(homePage.verifyHomePageNavBar());
-//		myAssignmentsPage = homePage.clickMyAssignmentPageLink();
-//		Assert.assertEquals(myAssignmentsPage.verifyMyAssignmentPage(), "MY ASSIGNMENTS");
-//		assignmentPage = myAssignmentsPage.clickAssignmentLink();
-//		Assert.assertTrue(assignmentPage.verifyAssignmentTitleDisplayed());
 	}
 	
 	@AfterTest //This will run after all the tests to close current browser instance
