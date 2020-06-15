@@ -1,6 +1,9 @@
 ####
-### Originally written by Ashish Mathur
-####
+# Welcome to Automation University
+###### Originally written by Ashish Mathur
+#### June 15, 2020:
+#### The following system requirements are for getting started. We have already installed everything we need.
+#
 # Basic System requirements:
 You'll need these to edit and run the code:
 ```
