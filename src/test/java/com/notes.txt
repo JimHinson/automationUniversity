@@ -2,7 +2,6 @@ To Do
 Test constructs PageFactory
   loginTest constructs loginPage
   openAssignment constructs loginPage and assignmentPage
-Delete TestSessionInitiator
 Need to use PageFactory to initialize elementns
 move timeout to config
 move webdriver to page objects (https://www.testingexcellence.com/page-object-framework-java-webdriver/)
@@ -12,3 +11,5 @@ eliminate cengage.webassign ?
 Completed
 - Pages and Tests inherited from TestSessionInitiator, whose parent was WebDriverFactory.
 - WebDriverFactory wasn't a factory - it just provided some helper methods.
+- Delete TestSessionInitiator
+- TestNG annotation descriptions
