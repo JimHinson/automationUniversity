@@ -9,7 +9,7 @@ public class HomePage extends BasePageFactory {
 	private By homePage = By.cssSelector("main h1");
 	private By assignmentHomePage = By.cssSelector("[data-test='My Assignments']>ul li a");
 	public static String homepageURL;
-	
+
 	public HomePage(WebDriver driver) {
 		super(driver);
 	}
@@ -18,8 +18,8 @@ public class HomePage extends BasePageFactory {
 		return findElement(homePageNavBar).isDisplayed();
 	}
 	
-	public String verifyHomePage() {
-		return findElement(homePage).getText();
+	public boolean verifyHomePage() {
+		return findElement(homePage).isDisplayed();
 	}
 	
 	public void close() {

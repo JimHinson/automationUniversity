@@ -26,7 +26,7 @@ public class BaseTest {
     @AfterSuite
     public void afterSuite() {
         if(null != driver) {
-            driver.close();
+//            driver.close();
             driver.quit();
         }
     }
